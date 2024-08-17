@@ -62,7 +62,7 @@
                     <div class="modal-body">
                         <div class="card-body" style="position: relative;">
                             <div class="plus-circle" >+</div>
-                            <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}" class="card-img-top product-image" />
+                            <img src="{{ product.featured_image | image_url }}" id="next" alt="{{ product.title }}" class="card-img-top product-image" />
                         </div>
                     </div>
                 </button>
@@ -83,8 +83,10 @@
                             
                         </div>
                         {% comment %} for color options {% endcomment %}
-                        <div>
+                         <h3>Color</h3>
+                        <div >
                             {% assign color_option_index = -1 %}
+                            {% assign color_limit = 0 %}
                             {% for option in product.options_with_values %}
                                 {% if option.name == 'Color' %}
                                     {% assign color_option_index = forloop.index0 %}
@@ -95,14 +97,17 @@
                                 <div class="color-options">
                                     {% for variant in product.variants %}
                                         {% assign color = variant.options[color_option_index] %}
-                                        <label style="display: inline-block; margin-right: 10px;">
-                                            <input type="radio" name="color" value="{{ color }}" data-variant-id="{{ variant.id }}">
-                                            <span style="background-color: {{ color | downcase }}; width: 20px; height: 20px; display: inline-block; border: 1px solid #ccc;"></span>
-                                            {{ color }}
-                                        </label>
+                                        {% if color_limit < 2 %}
+                                            <label style="display: inline-block; margin-right: 10px;">
+                                                <input type="radio" name="color" value="{{ color }}" data-variant-id="{{ variant.id }}">
+                                                <span style="background-color: {{ color | downcase }}; width: 20px; height: 20px; display: inline-block; border: 1px solid #ccc; margin-top:20px;"></span>
+                                                {{ color }}
+                                            </label>
+                                            {% assign color_limit = color_limit | plus: 1 %}
+                                        {% endif %}
                                     {% endfor %}
                                 </div>
-                            {%endif%}
+                            {% endif %}
                         </div>
                         <div style="font-size:medium;">Size</div>
                        
