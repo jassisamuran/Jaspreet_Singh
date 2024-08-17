@@ -1,10 +1,10 @@
 <!-- Top Banner Section -->
 <div class="container-fluid bg-secondary text-white py-2">
     <div class="d-flex align-items-center justify-content-between">
-        <div>
+        <div style="border: 2px solid red; padding: 5px;">
             <b>Tisco Vision</b>
         </div>
-        <div class="text-center mx-auto">
+        <div class="text-center mx-auto " style="border: 2px solid red; padding: 5px;">
             Find the ideal gift for the real one
         </div>
     </div>
@@ -21,10 +21,12 @@
         <!-- Text Content -->
         <div class="col-lg-6">
             <div class="text-black p-4 h-100">
-                <h1 class="display-4 text-center mb-4"><b>The Gift Guide</b></h1>
-                <p class="fs-5 ms-5">Discover joy: Your Ultimate Holiday Gift Destination.</p>
-                <p class="fs-5 ms-5">Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.</p>
-            </div>
+                <h1 class="display-4 text-center mb-4" style="border: 2px solid red; padding: 5px;"><b>The Gift Guide</b></h1>
+                <div style="border: 2px solid red; padding: 5px;">
+                    <p class="fs-5 ms-5" >Discover joy: Your Ultimate Holiday Gift Destination.</p>
+                    <p class="fs-5 ms-5">Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.</p>
+                </div>
+                </div>
         </div>
         <!-- Image Content -->
         <div class="col-lg-6">
@@ -36,11 +38,13 @@
 <!-- Bottom Banner Section -->
 <div class="container-fluid bg-secondary text-white py-2">
     <div class="d-flex align-items-center justify-content-center">
-        <div class="text-center">
+        <div class="text-center" style="border: 2px solid red; padding: 5px;">
             <b>SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZE XXS TO 6XL</b>
         </div>
     </div>
 </div>
+<br>
+<br>
 
 <!-- Product Section -->
 <h2 class="my-4" style="margin-left: 10px;">Tisco Vision in the Wild</h2>
@@ -73,15 +77,43 @@
                             </div>
                             
                         </div>
-                        <div style="font-size:medium;">Color</div>
+                        {% comment %} for color options {% endcomment %}
+                        <div>
+                            {% assign color_option_index = -1 %}
+                            {% for option in product.options_with_values %}
+                                {% if option.name == 'Color' %}
+                                    {% assign color_option_index = forloop.index0 %}
+                                {% endif %}
+                            {% endfor %}
+                        
+                            {% if color_option_index >= 0 %}
+                                <div class="color-options">
+                                    {% for variant in product.variants %}
+                                        {% assign color = variant.options[color_option_index] %}
+                                        <label style="display: inline-block; margin-right: 10px;">
+                                            <input type="radio" name="color" value="{{ color }}" data-variant-id="{{ variant.id }}">
+                                            <span style="background-color: {{ color | downcase }}; width: 20px; height: 20px; display: inline-block; border: 1px solid #ccc;"></span>
+                                            {{ color }}
+                                        </label>
+                                    {% endfor %}
+                                </div>
+                            {%endif%}
+                        </div>
+                        <div style="font-size:medium;">Size</div>
+                        {%form 'product', product%}
+                        <select name="id">
                         {% for variant in product.variants %}
-                            <option value="{{variant.id}}">
+                            
+                            <option value="{{variant.id}}" default="Choose your style">
                                 {{variant.title}}
                             </option>
                         {%endfor%}
+                        </select>
                         <div>
-
+                        
                         </div>
+                        {% endform %}
+
                         <button>Add to Cart</button>
                     </div>
                 </div>
