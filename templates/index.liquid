@@ -68,7 +68,7 @@
                 </button>
 
                 <!-- The Modal -->
-                <div id="myModal{{ forloop.index }}" class="modal" >
+                <div id="myModal{{ forloop.index }}" class="modal"  >
                     <!-- Modal content -->
                     <div class="modal-content">
                         <span class="close" data-modal="myModal{{ forloop.index }}">&times;</span>
@@ -105,6 +105,7 @@
                             {%endif%}
                         </div>
                         <div style="font-size:medium;">Size</div>
+                       
                         {%form 'product', product%}
                         <select name="id">
                         {% for variant in product.variants %}
@@ -119,7 +120,7 @@
                         </div>
                         {% endform %}
 
-                        <button>Add to Cart</button>
+                        <button style="width: 130px ; height:30px ; color:white; font-size:15px; background-color:black ;margin-left:130px;">Add to Cart</button>
                     </div>
                 </div>
             </div>
