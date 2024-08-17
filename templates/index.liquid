@@ -1,7 +1,7 @@
 <!-- Top Banner Section -->
 <div class="container-fluid bg-secondary text-white py-2">
     <div class="d-flex align-items-center justify-content-between">
-        <div >
+        <div>
             <b>Tisco Vision</b>
         </div>
         <div class="text-center mx-auto">
@@ -47,40 +47,46 @@
 <div class="container-fluid">
     <div class="row">
         {% for product in collections['frontpage'].products %}
-        <div class="col-sm-12 col-md-6 col-lg-4 ">
+        <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card my-3 p-3 rounded">
-                {% comment %} div abslolue zindex onlcick listener  {% endcomment %}
-                 {% comment %} box opener on click {% endcomment %}
-                <button id="myBtn">
-                    <div className="modal-body">
-                    <div>
-                        
+                <button id="myBtn{{ forloop.index }}" class="modal-btn" data-modal="myModal{{ forloop.index }}">
+                    <div class="modal-body">
+                        <div class="card-body" style="position: relative;">
+                            <div style="position: absolute; top:50%; right:50%; left:50%; z-index:1;">+</div>
+                            <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}" class="card-img-top product-image" />
+                        </div>
                     </div>
-                    <div class="card-body "style="position:realtive" >
-                      <div style="position: absolute; top:50%; right:50%;left:50%; z-index:1;" >+</div>  
-                    <img src="{{product.featured_image | image_url }}" alt="{{ product.title }}" class="card-img-top product-image"  style=""/>
-               
-                </div>
-                   </div>
                 </button>
 
                 <!-- The Modal -->
-                <div id="myModal" class="modal">
-                
-                  <!-- Modal content -->
-                  <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>Some text in the Modal..</p>
-                    <button >S</button>
-                  </div>
-                
+                <div id="myModal{{ forloop.index }}" class="modal" >
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close" data-modal="myModal{{ forloop.index }}">&times;</span>
+                        {% comment %} <p>{{ product.title }}</p> {% endcomment %}
+                         <div style="display:flex;">
+                            <img src="{{product.featured_image |  image_url: width: }}" style="width: 120px; height:130px;">
+                            <div style="font-size:small; margin-left:20px;">
+                                <div ><b>{{product.title}}</b></div>
+                                <div>{{product.price}}$ </div>
+                                <div>{{product.description}}</div>
+                            </div>
+                            
+                        </div>
+                        <div style="font-size:medium;">Color</div>
+                        {% for variant in product.variants %}
+                            <option value="{{variant.id}}">
+                                {{variant.title}}
+                            </option>
+                        {%endfor%}
+                        <div>
+
+                        </div>
+                        <button>Add to Cart</button>
+                    </div>
                 </div>
-                
-                
-                
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
-
