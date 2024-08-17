@@ -50,13 +50,33 @@
         <div class="col-sm-12 col-md-6 col-lg-4 ">
             <div class="card my-3 p-3 rounded">
                 {% comment %} div abslolue zindex onlcick listener  {% endcomment %}
-                <div className="modal-body">
+                 {% comment %} box opener on click {% endcomment %}
+                <button id="myBtn">
+                    <div className="modal-body">
+                    <div>
+                        
+                    </div>
                     <div class="card-body "style="position:realtive" >
                       <div style="position: absolute; top:50%; right:50%;left:50%; z-index:1;" >+</div>  
-                    <img src="{{product.featured_image | image_url }}" alt="{{ product.title }}" class="card-img-top product-image"  style="margin-top: -50px;"/>
+                    <img src="{{product.featured_image | image_url }}" alt="{{ product.title }}" class="card-img-top product-image"  style=""/>
                
                 </div>
                    </div>
+                </button>
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+                
+                  <!-- Modal content -->
+                  <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Some text in the Modal..</p>
+                    <button >S</button>
+                  </div>
+                
+                </div>
+                
+                
                 
             </div>
         </div>
