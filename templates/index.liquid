@@ -34,7 +34,7 @@
                 </div>
         </div>
         <!-- Image Content -->
-        <div class="col-lg-6">
+        <div class="col-lg-6" id="hidde">
             <img src="{{ 'second.png' | asset_img_url }}" class="img-fluid" alt="Second Image" style="width: 100%;">
         </div>
     </div>
@@ -62,7 +62,7 @@
                     <div class="modal-body">
                         <div class="card-body" style="position: relative;">
                             <div class="plus-circle" >+</div>
-                            <img src="{{ product.featured_image | image_url }}" id="next" alt="{{ product.title }}" class="card-img-top product-image" />
+                            <img src="{{product.featured_image | image_url }}" id="next" alt="{{ product.title }}" class="card-img-top product-image" />
                         </div>
                     </div>
                 </button>
@@ -70,7 +70,7 @@
                 <!-- The Modal -->
                 <div id="myModal{{ forloop.index }}" class="modal"  >
                     <!-- Modal content -->
-                    <div class="modal-content">
+                    <div class="modal-content" onclick="closeModal()">
                         <span class="close" data-modal="myModal{{ forloop.index }}">&times;</span>
                         {% comment %} <p>{{ product.title }}</p> {% endcomment %}
                          <div style="display:flex;">
