@@ -11,14 +11,35 @@
     </div>
     
 </div>
+{% comment %} working in mobile version {% endcomment %}
+<div  id="inmobile" >
+    <div class="row g-4">
+        <!-- Text Content -->
+        <div class="col-lg-6">
+            <div class="text-black p-4 h-100">
+                <h1 class="display-4 text-center mb-4" style="border: 2px solid red; padding: 5px;"><b>The Gift Guide</b></h1>
+                <div style="border: 2px solid red; padding: 5px;">
+                    <p class="fs-5 ms-5" >Discover joy: Your Ultimate Holiday Gift Destination.</p>
+                    <p class="fs-5 ms-5">Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.</p>
+                </div>
+                
+                </div>
+        </div>
+        <!-- Image Content -->
+    </div>
+</div>
+
 
 <!-- Full-Width Image Section -->
 <div class="container-fluid p-0">
-    <img src="{{ 'Frame 1957.png' | asset_img_url }}" class="img-fluid" alt="Frame 1957" style="width: 100%;">
+    <div >
+        <button   class="shop-button1 postion"  >SHOP NOW-></button>
+    </div>
+    <img src="{{ 'Frame 1957.png' | asset_img_url }}" class="img-fluid" alt="Frame 1957" style="width: 100%;" id="imagewidth">
 </div>
 
 <!-- Content Section -->
-<div class="container-fluid py-4">
+<div class="container-fluid py-4" id="hidde">
     <div class="row g-4">
         <!-- Text Content -->
         <div class="col-lg-6">
@@ -34,8 +55,8 @@
                 </div>
         </div>
         <!-- Image Content -->
-        <div class="col-lg-6" id="hidde">
-            <img src="{{ 'second.png' | asset_img_url }}" class="img-fluid" alt="Second Image" style="width: 100%;">
+        <div class="col-lg-6"   >
+            <img src="{{ 'second.png' | asset_img_url }}" class="img-fluid" alt="Second Image" style="width: 100%;" >
         </div>
     </div>
 </div>

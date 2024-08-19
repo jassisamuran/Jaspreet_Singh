@@ -24,6 +24,52 @@
                     display:block;
                 }
             }
+            /* for written in words hidding and showing */
+            @media screen and (max-width:600px) {
+                #inmobile{
+                    display: block;
+                }
+                
+            }
+            @media screen and (min-width:600px) {
+                #inmobile{
+                    display: none;
+                }
+                
+            }
+            /* for image width increase */
+            @media screen and (max-width:600px) {
+                #imagewidth{
+                    height: 200px;
+                }
+                
+            }
+            @media screen and (min-width:600px) {
+                #imagewidth{
+                    height:auto;
+                }
+                
+            }
+            /* for changing position of shop icon  */
+            @media screen and (max-width:600px) {
+                .postion{
+                    z-index:1;
+                    display: block;
+                    top:180px;
+                    left:40px;
+                    position:absolute;
+                    transform: translateX(30%);
+                }
+                
+            }
+            @media screen and (min-width:600px) {
+                .postion{
+                   z-index:0;
+                   display: none;
+                }
+                
+            }
+           
 
             /* The Modal (background) */
             .modal {
