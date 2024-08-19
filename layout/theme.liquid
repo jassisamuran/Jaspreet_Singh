@@ -69,7 +69,37 @@
                 }
                 
             }
+            /* for menu-option hide center and left icons */
+            @media screen and (max-width:600px) {
+                #menu-hide{
+                    display: none;
+                }
+                
+            }
+            @media screen and (min-width:600px) {
+                .menu-hide{
+                    display: block;
+                }
+                
+            }
+            /* for lying tisco at center  */
+            @media screen and (max-width: 600px) {
+            /* Center the #menu-hide1 element and ensure the border wraps the text */
+            #menu-hide1 {
+                text-align: center;
+                display: inline-block; /* Make the element's width fit its content */
+                margin: 0 auto; /* Center the element */
+                border-width: 2px;
+            }
+
            
+
+            /* Center content in the flex container */
+            .d-flex {
+                justify-content: center; /* Center the content horizontally */
+            }
+        }
+
 
             /* The Modal (background) */
             .modal {
